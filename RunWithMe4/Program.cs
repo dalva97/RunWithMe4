@@ -66,7 +66,7 @@ namespace RunwithMe
                 var milesInput = Console.ReadLine();
                 if (milesInput.ToUpper() == "E")
                 {
-                    break;
+                    return;
                 }
 
 
