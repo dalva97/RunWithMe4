@@ -57,9 +57,13 @@ namespace RunwithMe
 
             if (run.Ran == false) { return; }
 
-
-            while (run.Distance < 10m )
+            var holiday = new Holiday();
+            var istodayaholiday = holiday.IsTodayAHoliday();
+            decimal distance = istodayaholiday ? 1 : 10;
+            while (run.Distance < distance )
             {
+                
+           
                 Console.WriteLine("You have not ran 10 miles yet.");
                 Console.WriteLine("How many additional miles did you run? (or press e to exit)");
 
