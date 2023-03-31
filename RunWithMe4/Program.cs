@@ -57,35 +57,36 @@ namespace RunwithMe
 
             if (run.Ran == false) { return; }
 
-            int
-            while (run.Ran == true)
+
+            while (run.Distance < 10m )
             {
-                Console.WriteLine("How far and how long did you run?");
+                Console.WriteLine("You have not ran 10 miles yet.");
+                Console.WriteLine("How many additional miles did you run? (or press e to exit)");
 
-
-
-                Console.WriteLine("Since you ran, how far did you run? Enter distance in miles");
-                var responseHowFarRan = Console.ReadLine();
-                if (!decimal.TryParse(responseHowFarRan, out decimal howFarRan))
+                var milesInput = Console.ReadLine();
+                if (milesInput.ToUpper() == "E")
                 {
-                    LogError(responseHowFarRan, 2);
+                    break;
+                }
+
+
+                if (!decimal.TryParse(milesInput, out decimal howFarRan))
+                {
+                    LogError(milesInput, 2);
                     return;
                 }
-                run.Distance = howFarRan;
+                run.Distance += howFarRan;
 
-                Console.WriteLine("How long did it take you to run? Enter duration in hours and/or minutes eg. 1:15");
-                if (!TimeSpan.TryParse(Console.ReadLine(), out TimeSpan HowLongRan))
-                {
-                    LogError(HowLongRan.ToString(), 3);
-                    return;
-                }
-                run.Duration = HowLongRan;
+                
 
                 Console.WriteLine(run);
 
-
+                if (run.Distance == 10m)
+                {
+                    Console.WriteLine("Congrats you ran 10 miles!");
+                }
             }
         }
     }
 
-
+}
